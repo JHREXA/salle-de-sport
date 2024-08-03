@@ -1,0 +1,119 @@
+<!-- Ce code HTML contient une structure de page pour un portail de salle de sport, avec des fonctionnalités permettant d'afficher, d'ajouter, de modifier et de supprimer des membres. Le code est structuré en utilisant des classes Bootstrap pour la mise en page et Angular pour la gestion de l'état et des interactions utilisateur. Voici une explication détaillée de chaque section :
+
+ 1 - Structure de base
+ 2 - Affichage de la liste de membres
+ 3 - Détails des cartes des membres
+ 4 - Formulaire de modal pour ajouter/éditer des membres  -->
+
+
+<!-- 1 - Structure de base  -->
+    <div class="container">
+     <div class="row pt-3">
+        <div class="col-6">
+            <h4>Salle de Sport Portail</h4>      
+        </div>
+        <div class="col-6 text-end">
+            <button class="btn btn-outline-success" (click)="openModal()">Ajouter un(e) membre nouveau(elle)</button>
+        </div>
+    </div>
+
+<!-- 2 - Affichage de la liste de membres -->
+
+    <div *ngIf="memberList.length !== 0">
+        <div class="row">
+            <div class="col-3" *ngFor="let item of memberList; let i = index">
+                <div class="card">
+                  <!-- 3 - Détails des cartes des membres -->      
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-6">
+                                {{ item.nom }}
+                            </div>
+                            <div class="col-6 text-end">
+                                {{ item.numeroTel }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ item.ville }}, {{ item.region }}, {{ item.codePostal }}</p>
+                        <p>{{ item.adresse }}</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <div class="row">
+                            <div class="col-6">
+                                <small>{{ item.email }}</small>
+                            </div>
+                            <div class="col-8">
+                                <button class="btn btn-sm btn-primary" (click)="onEdit(item)">Éditer</button>
+                                <button class="btn btn-sm btn-danger" (click)="onDelete(item)">Supprimer</button>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="memberList.length == 0" class="col-12 pt-4 text-center no-Member-Found">
+        <h5>Pas de membres enregistré(e)s. Ajoutez-en des nouveaux(elles)</h5>
+    </div>
+    
+<!-- 4 - Formulaire de modal pour ajouter/éditer des membres -->
+    <div class="modal" tabindex="-1" id="myModal" #myModal>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajoutez un(e) nouveau(elle) membre</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <label for="nom">Nom, Prénom</label>
+                            <input type="text" id="nom" [(ngModel)]="memberObj.nom" class="form-control" placeholder="nom">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="mobile">Numéro de téléphone</label>
+                            <input type="text" id="mobile" [(ngModel)]="memberObj.numeroTel" class="form-control" placeholder="Mobile">
+                        </div>
+                        <div class="col-6">
+                            <label for="email">Adresse émail</label>
+                            <input type="text" id="email" [(ngModel)]="memberObj.email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="ville">ville</label>
+                            <input type="text" id="ville" [(ngModel)]="memberObj.ville" class="form-control" placeholder="ville">
+                        </div>
+                        <div class="col-4">
+                            <label for="region">Région</label>
+                            <input type="text" id="region" [(ngModel)]="memberObj.region" class="form-control" placeholder="region">
+                        </div>
+                        <div class="col-4">
+                            <label for="codePostal">Code Postal</label>
+                            <input type="text" id="codePostal" [(ngModel)]="memberObj.codePostal" class="form-control" placeholder="Postal Code">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="adresse">Adresse</label>
+                            <textarea id="adresse" rows="3" [(ngModel)]="memberObj.adresse" class="form-control"></textarea>
+                        </div> 
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
+                    <div *ngIf="memberObj.id == 0">
+                        <button type="button" class="btn btn-primary" (click)="saveMember()">Save Member</button>
+                    </div>
+                    <div *ngIf="memberObj.id > 0">
+                        <button type="button" class="btn btn-success" (click)="updateMember()">Update</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

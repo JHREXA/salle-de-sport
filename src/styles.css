@@ -1,0 +1,114 @@
+    /* Container and Row Styling */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+/* Header Styling */
+h4 {
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* Button Styling */
+button.btn {
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+/* Member List Cards */
+.card {
+    margin-bottom: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #007bff;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.card-body {
+    background-color: #ffffff;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.card-footer .btn {
+    margin-right: 5px;
+}
+
+.card-footer .btn:last-child {
+    margin-right: 0;
+}
+
+/* Text Alignment */
+.text-end {
+    text-align: right;
+}
+
+/* No Member Record Found */
+.no-Member-Found {
+    padding: 40px 0;
+    text-align: center;
+    color: #dc3545;
+}
+
+/* Modal Styling */
+.modal-header, .modal-footer {
+    background-color: #f8f9fa;
+}
+
+.modal-title {
+    color: #007bff;
+}
+
+.modal-body label {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.modal-body input,
+.modal-body textarea {
+    margin-bottom: 10px;
+}
+
+.modal-footer .btn-danger {
+    margin-right: auto;
+}
+
+.modal-footer .btn-primary,
+.modal-footer .btn-success {
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .col-6, .col-3, .col-8, .col-12, .col-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .text-end {
+        text-align: left;
+    }
+
+    .modal-dialog {
+        max-width: 95%;
+        margin: 1.75rem auto;
+    }
+}
+
